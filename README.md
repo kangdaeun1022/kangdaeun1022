@@ -1,136 +1,151 @@
-# Kang Daeun
+<div align="center">
 
-### Backend Developer interested in Financial IT & Reliable Systems
+# 👋 Kang Daeun
 
-🎓 Computer Engineering @ Dankook University  
-📚 **GPA 4.36 / 4.5 · Top of Class**
+### Backend Developer · Financial IT · Reliable Systems
 
-기능 구현을 넘어 **동시성, 데이터 정합성, 성능, 운영 안정성**을 고민하는 백엔드 개발자를 지향합니다.
+**“실제 사용 환경에서 발생하는 문제를 재현하고, 측정하고, 개선합니다.”**
 
-특히 실제 사용자가 있는 서비스를 운영하며 발생하는 문제를 재현하고,
-측정과 실험을 통해 개선하는 과정에 관심이 있습니다.
+🎓 Computer Engineering @ Dankook University
+📚 GPA **4.36 / 4.5 · Top of Class**
+
+<br>
+
+`Java` `Spring Boot` `JPA` `MySQL` `Redis` `Docker`
+
+</div>
+
+---
+
+## ⚡ At a Glance
+
+|                           |                              |
+| ------------------------- | ---------------------------- |
+| 👥 **4,000+ Users**       | 실제 사용자가 이용한 수강신청 연습 서비스 운영   |
+| 🔒 **0 Oversubscription** | 100개 동시 요청 환경에서 정원 동시성 문제 해결 |
+| 🌱 **Open Source**        | Micrometer 공식 프로젝트 PR Merged |
 
 ---
 
 ## 🚀 Featured Projects
 
-### 🎓 [Course Registration Practice System](https://github.com/lab412sugang2/sugang)
+### 🎓 Course Registration Practice System
 
-**3-person team · Development Contribution 100%**  
-**Role:** Backend / Infra / Deployment / Operations
+> **“수강신청에서 가장 위험한 순간은 사용자가 동시에 몰리는 순간이라고 생각했습니다.”**
 
-`Java` `Spring Boot` `JPA` `MySQL` `Docker` `Micrometer` `Prometheus` `Grafana` `k6`
+`Java` `Spring Boot` `JPA` `MySQL` `Docker` `k6` `Micrometer` `Prometheus` `Grafana`
 
-실제 사용자 환경에서 운영한 수강신청 연습 서비스입니다.
+실제 사용자 **4,000명 이상**이 이용한 수강신청 연습 서비스입니다.
 
-- Spring Boot 기반 **전체 백엔드 구현**
-- 수강신청 비즈니스 로직 및 DB 구조 설계
-- 학점 제한 / 시간표 충돌 / 중복 신청 / 폐강 / 정원 초과 검증 구현
-- 정원 10명에 100개 동시 요청을 보내 **Race Condition 재현**
-- 기존 로직에서 정원 초과 및 신청 카운터 불일치 현상 확인
-- 비관적 락 / 낙관적 락 / Conditional UPDATE 방식 비교
-- **Conditional UPDATE 기반 원자적 정원 제어 적용**
-- 동일 조건에서 `10 success / 90 full rejected / 0 oversubscription` 검증
-- 신청 INSERT 실패 시 정원 카운터까지 함께 Rollback되는 트랜잭션 검증
-- 동시 중복 신청에 UNIQUE Constraint를 최종 방어선으로 적용
-- k6 부하 테스트를 통한 병목 구간 분리 및 성능 측정
-- Micrometer / Prometheus / Grafana 기반 모니터링 구축
-- 서버 시간 기준 로그인 제어 및 경계 시간 오류 개선
-- Docker / Render / Railway / MySQL 환경 배포 및 운영
+단순히 기능을 구현하는 데서 끝내지 않고,
+실제 수강신청처럼 요청이 한순간에 몰렸을 때 어떤 문제가 생기는지 직접 실험했습니다.
 
-**Keywords**
+### Problem
 
-`Concurrency` `Transaction` `Data Consistency` `Performance Test` `Monitoring`
+정원 10명인 강의에 **100개의 동시 요청**을 발생시켜
+
+* Race Condition
+* 정원 초과
+* 신청 카운터 불일치
+
+문제를 재현했습니다.
+
+### Experiment
+
+동일한 환경에서 세 가지 방식을 비교했습니다.
+
+`Pessimistic Lock`
+→ `Optimistic Lock`
+→ `Conditional UPDATE`
+
+### Result
+
+**Conditional UPDATE 기반 원자적 정원 제어 적용**
+
+`10 Success` · `90 Full Rejected` · `0 Oversubscription`
+
+추가로
+
+* 신청 INSERT 실패 시 정원 카운터까지 Rollback되는 트랜잭션 검증
+* UNIQUE Constraint를 이용한 중복 신청 최종 방어
+* k6 기반 부하 테스트
+* Micrometer / Prometheus / Grafana 기반 모니터링
+* 서버 시간 기준 로그인 제어 및 경계 시간 오류 개선
+
+까지 진행했습니다.
+
+🔗 [Repository](https://github.com/lab412sugang2/sugang)
 
 ---
 
-### 🌏 [TOMO — Cultural Email Copilot](https://github.com/tomo-likelion/tomo-backend)
+### 🌏 TOMO — Cultural Email Copilot
 
-**Backend 2-person collaboration · Contribution ~85%**
+> **“번역은 맞아도, 표현은 틀릴 수 있다는 문제에서 시작했습니다.”**
 
-`Python` `FastAPI` `PostgreSQL` `SQLAlchemy` `Alembic` `OpenAI API` `Docker`
+`Python` `FastAPI` `PostgreSQL` `SQLAlchemy` `Alembic` `OpenAI Responses API`
 
-수신자의 국가, 언어, 업무 관계를 고려해
-이메일의 문화적 위험을 분석하고 적절한 표현을 추천하는 AI 이메일 서비스입니다.
+수신자의 국가·언어·업무 관계를 고려해
+이메일의 문화적 위험을 분석하고 적절한 표현을 추천하는 AI 서비스입니다.
 
-- 수신자 프로필 등록 / 조회 REST API 구현
-- OpenAI Responses API 기반 이메일 문화적 맥락 분석
-- Structured Outputs를 활용한 구조화된 LLM 응답 처리
-- LLM 결과의 위험도 과소평가 문제를 **백엔드 보정 로직**으로 개선
-- PostgreSQL 기반 데이터 영속화
-- SQLAlchemy 모델 및 Repository 구조 설계
-- Alembic 기반 DB Migration 구성
-- 외부 LLM 실패 / 환경 설정 오류 / 미등록 사용자 예외 처리
-- 운영 DB와 테스트 DB 환경 분리
-- 분석 및 위험도 산정 테스트 작성
+**Backend Contribution ~85%**
+
+* 수신자 프로필 및 이메일 분석 REST API 구현
+* OpenAI Responses API 연동
+* Structured Outputs 기반 구조화된 LLM 응답 처리
+* LLM의 위험도 과소평가 문제를 백엔드 보정 로직으로 개선
+* PostgreSQL / SQLAlchemy 기반 데이터 계층 설계
+* Alembic 기반 DB Migration
+* 운영 DB / 테스트 DB 환경 분리
+* 외부 LLM 실패 및 예외 상황 처리
+* 분석 및 위험도 산정 테스트 작성
 
 **6 Pull Requests Merged**
 
-**Keywords**
-
-`LLM Integration` `REST API` `PostgreSQL` `Testing`
+🔗 [Repository](https://github.com/tomo-likelion/tomo-backend)
 
 ---
 
-### 🚑 [SuperSave](https://github.com/Programming-G1/supersave)
+### 🚑 SuperSave
 
-**Team Project · Contribution ~40%**
+> **“응급실을 찾는 시간을 줄이면 실제 의사결정도 빨라질 수 있다고 생각했습니다.”**
 
 `Java` `Spring Boot` `JPA` `PostgreSQL` `Redis` `Gemini`
 
 실시간 병상 정보와 AI 판단을 활용한
 응급실 이송 의사결정 지원 서비스입니다.
 
-- 프론트엔드 정적 리소스와 Spring Boot 백엔드 통합
-- 구급대원 이송 요청과 병원 관리자 처리 흐름 구현
-- AI 기반 중증도 판단 기능 적용
-- 외부 AI 장애 시 fallback 처리
-- JPA 기반 이송 데이터 영속화
-- MySQL 중심 구조에서 **PostgreSQL / Supabase로 Migration**
-- Redis 기반 병원 정보 캐싱 구조 활용
-- 실행 환경 및 API 연동 구조 개선
+* 구급대원 이송 요청 / 병원 관리자 처리 흐름 구현
+* AI 기반 중증도 판단 기능 적용
+* 외부 AI 장애 시 fallback 처리
+* JPA 기반 이송 데이터 영속화
+* PostgreSQL / Supabase Migration
+* Redis 기반 병원 정보 캐싱
+* 실행 환경 및 API 연동 구조 개선
 
 **9 Pull Requests Merged**
 
----
-
-### 🔐 [HALO](https://github.com/hell-course/halo)
-
-**Team Project · Contribution ~55%**
-
-`Java` `Spring Boot` `Spring Security` `JWT` `PostgreSQL` `pgvector` `Gemini`
-
-AI를 활용해 아이디어와 유사한 서비스를 탐색하고
-시장조사를 지원하는 서비스입니다.
-
-- Spring Security + JWT 기반 회원가입 / 로그인 구현
-- BCrypt 기반 비밀번호 암호화
-- 인증이 필요한 API 접근 제어
-- Gemini 기반 시장 분석 기능 구현
-- 외부 API 직접 연동 및 JSON 응답 처리
-- 실패 상황을 고려한 fallback 처리
-- Embedding 생성 및 Vector Search 기능 구현
-- PostgreSQL / pgvector 기반 유사 서비스 검색
-- API Key 환경변수 분리
-
-**4 Pull Requests Merged**
+🔗 [Repository](https://github.com/Programming-G1/supersave)
 
 ---
 
-## 🌱 Open Source Contribution
+## 🌱 Open Source
 
-### [Micrometer](https://github.com/micrometer-metrics/micrometer)
+### Micrometer
+
+> **Issue → Codebase Analysis → Documentation → Review → Merge**
 
 Spring 생태계에서 널리 사용되는 Metrics Facade인
 **Micrometer 공식 프로젝트에 기여했습니다.**
 
-🔗 [PR #7241 — StatsD Unix Domain Socket configuration guide](https://github.com/micrometer-metrics/micrometer/pull/7241)
+**PR #7241 — StatsD Unix Domain Socket Configuration Guide**
 
-- 기존 Issue #5730 기반으로 문제 파악
-- StatsD Registry의 Unix Domain Socket 설정 방법 문서화
-- Java 설정 예제 추가
-- Spring Boot `application.yml` 설정 예제 추가
-- **Merged into upstream**
+* 기존 Issue 분석
+* StatsD Registry UDS 설정 방법 문서화
+* Java configuration example 추가
+* Spring Boot `application.yml` example 추가
+* **Merged into upstream**
+
+🔗 [Merged Pull Request](https://github.com/micrometer-metrics/micrometer/pull/7241)
 
 ---
 
@@ -138,35 +153,37 @@ Spring 생태계에서 널리 사용되는 Metrics Facade인
 
 ### Backend
 
-`Java` `Spring Boot` `Spring Data JPA` `Spring Security`  
+`Java` `Spring Boot` `Spring Data JPA` `Spring Security`
 `Python` `FastAPI`
 
 ### Database
 
 `MySQL` `PostgreSQL` `Redis`
 
-### Infrastructure & Monitoring
+### Infrastructure & Observability
 
-`Docker` `Render` `Railway`  
-`Micrometer` `Prometheus` `Grafana` `k6`
+`Docker` `k6` `Micrometer` `Prometheus` `Grafana`
 
 ### AI / Data
 
-`OpenAI API` `Gemini API`  
-`SQLAlchemy` `pgvector`
+`OpenAI API` `Gemini API` `pgvector`
 
 ---
 
-## 📚 Current Focus
+## 🧠 Currently Exploring
 
-- Financial IT Backend
-- Database Transaction & Concurrency Control
-- Data Consistency
-- Spring Backend Architecture
-- Performance Testing & Monitoring
-- Algorithms & Data Structures
-- Automated Trading System Development
+`Financial IT Backend` · `Transaction & Concurrency`
+
+`Data Consistency` · `Performance Engineering`
+
+`Trading Systems` · `Algorithms & CS`
 
 ---
 
-> **Building backend systems that stay correct under real-world load.**
+<div align="center">
+
+### Build → Break → Measure → Improve
+
+**Backend systems that stay correct under real-world load.**
+
+</div>
