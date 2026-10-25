@@ -4,7 +4,6 @@
 
 ### Backend Developer · Financial IT · Reliable Systems
 
-**문제를 추측하지 않고, 재현하고 측정한 뒤 검증합니다.**
 
 Computer Engineering @ Dankook University  
 **GPA 4.36 / 4.5 · Top of Class**
